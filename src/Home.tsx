@@ -1,19 +1,23 @@
-import { Box, Button, FormControl, Text, TextInput } from "@primer/react";
-import { useState } from "react";
+import { Box, Button, Flash, FormControl, Text, TextInput } from "@primer/react";
+import { useEffect, useState } from "react";
+import { AuthRepositoryImpl } from "./AuthRepositoryImpl";
+import { CustomError, ErrorType } from "./CustomError";
 import { LoginUseCaseImpl } from "./LoginUseCaseImpl";
+import { useError } from "./useError";
 
 export function Home() {
-  const useCase = new LoginUseCaseImpl()
-  
+  const repository = new AuthRepositoryImpl()
+  const useCase = new LoginUseCaseImpl(repository)
+
+  const { getErrorMessage } = useError()
+
   const [username, setUsername] = useState({ value: '', error: '' })
   const [password, setPassword] = useState({ value: '', error: '' })
-  const [isLoading, setIsLoading] = useState(false)
 
-  const errorCodes = {
-    1: 'Insira um username válido',
-    2: 'Insira uma senha válida'
-  }
-  
+  const [isLoading, setIsLoading] = useState(false)
+  const [showSuccess, setShowSuccess] = useState(false)
+  const [globalError, setGlobalError] = useState('')
+
   function onChangeUsername(event: React.ChangeEvent<HTMLInputElement>) {
     setUsername({ value: event.target.value, error: '' })
   }
@@ -26,28 +30,46 @@ export function Home() {
     try {
       setIsLoading(true)
       await useCase.execute(username.value, password.value)
+      setShowSuccess(true)
     } catch (error) {
-      switch((error as Error).message) {
-        case '1':
-          setUsername(prevState => ({...prevState, error: errorCodes[1]}))
-          break
-        case '2':
-          setPassword(prevState => ({...prevState, error: errorCodes[2]}))
-          break
+      setShowSuccess(false)
+      if ((error as CustomError).type === ErrorType.Username) {
+        setUsername(state => ({ ...state, error: getErrorMessage((error as CustomError).message) }))
+      }
+      if ((error as CustomError).type === ErrorType.Password) {
+        setPassword(state => ({ ...state, error: getErrorMessage((error as CustomError).message) }))
+      }
+      if ((error as CustomError).type === ErrorType.Global) {
+        setGlobalError(getErrorMessage((error as CustomError).message))
       }
     } finally {
       setIsLoading(false)
     }
   }
-  
+
+  useEffect(() => {
+    if (showSuccess) {
+      setTimeout(() => setShowSuccess(false), 2000)
+    }
+  }, [showSuccess])
+
+  useEffect(() => {
+    if (globalError.trim()) {
+      setTimeout(() => setGlobalError(''), 2000)
+    }
+  }, [globalError])
+
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100vh', gap: '1rem' }}>
+      {showSuccess && <Flash variant='success'>Autenticado com sucesso!</Flash>}
+      {globalError.trim() && <Flash variant='danger'>{globalError}</Flash>}
+
       <Text>🐸</Text>
-      
+
       <FormControl id='username'>
         <FormControl.Label htmlFor="username">Username:</FormControl.Label>
         <TextInput value={username.value} onChange={onChangeUsername} />
-        {Boolean(username.error.trim()) && (
+        {username.error.trim() && (
           <FormControl.Validation id="username" variant="error">
             {username.error}
           </FormControl.Validation>
@@ -57,7 +79,7 @@ export function Home() {
       <FormControl id='password'>
         <FormControl.Label htmlFor="password">Senha:</FormControl.Label>
         <TextInput type='password' value={password.value} onChange={onChangePassword} />
-        {Boolean(password.error) && (
+        {password.error.trim() && (
           <FormControl.Validation id="password" variant="error">
             {password.error}
           </FormControl.Validation>

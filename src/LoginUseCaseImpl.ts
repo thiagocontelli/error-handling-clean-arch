@@ -1,10 +1,20 @@
+import { AuthRepository } from "./AuthRepository";
+import { CustomError, ErrorMessageCode, ErrorType } from "./CustomError";
 import { LoginUseCase } from "./LoginUseCase";
 
 export class LoginUseCaseImpl implements LoginUseCase {
-    async execute(username: String, password: string): Promise<void> {
-        if (username.trim() === '') throw new Error('1')
-        if (password.trim() === '') throw new Error('2')
+    constructor(private repository: AuthRepository) { }
 
-        console.log(username, password)
+    async execute(username: string, password: string): Promise<void> {
+        if (username.trim() === '') throw new CustomError(ErrorType.Username, 'ErrorMessageCode.InvalidUsername')
+        if (username.trim().length > 9) throw new CustomError(ErrorType.Username, ErrorMessageCode.UsernameGreaterThan8)
+        if (password.trim() === '') throw new CustomError(ErrorType.Password, ErrorMessageCode.InvalidPassword)
+        if (password.trim().length > 8) throw new CustomError(ErrorType.Password, ErrorMessageCode.PasswordGreaterThan8)
+
+        try {
+            await this.repository.login(username, password)
+        } catch (error) {
+            throw new CustomError(ErrorType.Global, (error as Error).message)
+        }
     }
 }
