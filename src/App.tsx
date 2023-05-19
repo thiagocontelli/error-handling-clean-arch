@@ -1,5 +1,5 @@
 import { BaseStyles, ThemeProvider } from "@primer/react";
-import { Home } from "./Home";
+import { Home } from "./Login";
 
 export function App() {
   return (

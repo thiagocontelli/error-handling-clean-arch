@@ -1,5 +1,5 @@
 export enum ErrorType {
-  Global = 'global',
+  Http = 'http',
   Username = 'username',
   Password = 'password'
 }
