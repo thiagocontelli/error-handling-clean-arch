@@ -7,12 +7,15 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "read-error": "node ./src/sheets/script.js"
   },
   "dependencies": {
     "@primer/octicons-react": "^19.1.0",
     "@primer/react": "^35.25.1",
     "axios": "^1.4.0",
+    "dotenv": "^16.0.3",
+    "googleapis": "^118.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "styled-components": "^5.3.10"

@@ -22,3 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Google Sheets Credentials
+src/sheets/credentials.json
+
+# Environment Variables
+.env

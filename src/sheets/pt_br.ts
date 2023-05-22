@@ -1,0 +1,1 @@
+export const pt_br = { invalid_username: 'Insira um nome de usuário válido', invalid_password: 'Insira uma senha válida', invalid_credentials: 'Credenciais Inválidas',  }
