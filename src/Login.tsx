@@ -6,7 +6,7 @@ import { CustomError, ErrorType } from "./CustomError";
 import { LoginUseCaseImpl } from "./LoginUseCaseImpl";
 import { useError } from "./useError";
 
-export function Home() {
+export function Login() {
   const repository = new AuthRepositoryImpl()
   const useCase = new LoginUseCaseImpl(repository)
 
