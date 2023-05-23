@@ -1,1 +1,1 @@
-A way to handle errors dynamically while keeping the business rules accountable to the use cases.
+A way to handle errors dynamically while keeping the frontend business rules responsible for the use cases.
