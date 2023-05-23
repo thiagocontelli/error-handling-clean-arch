@@ -1,12 +1,12 @@
-import { en_us } from "./sheets/keys/en_us"
+import { pt_br } from "./sheets/keys/pt_br"
 
 export function useError() {
   function getErrorMessage(errorMessageCode: string): string {
-    if (Object.keys(en_us).includes(errorMessageCode)) {
-      return Object.getOwnPropertyDescriptor(en_us, errorMessageCode)?.value
+    if (Object.keys(pt_br).includes(errorMessageCode)) {
+      return Object.getOwnPropertyDescriptor(pt_br, errorMessageCode)?.value
     }
 
-    return en_us.unknown_error
+    return pt_br.unknown_error
   }
 
   return {
