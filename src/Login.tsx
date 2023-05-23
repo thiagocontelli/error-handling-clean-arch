@@ -35,10 +35,10 @@ export function Home() {
       setShowSuccess(true)
     } catch (error) {
       setShowSuccess(false)
-      if ((error as CustomError).type === ErrorType.Username) {
+      if ((error as CustomError).type === ErrorType.UsernameInput) {
         setUsername(state => ({ ...state, error: getErrorMessage((error as CustomError).message) }))
       }
-      if ((error as CustomError).type === ErrorType.Password) {
+      if ((error as CustomError).type === ErrorType.PasswordInput) {
         setPassword(state => ({ ...state, error: getErrorMessage((error as CustomError).message) }))
       }
       if ((error as CustomError).type === ErrorType.Http) {

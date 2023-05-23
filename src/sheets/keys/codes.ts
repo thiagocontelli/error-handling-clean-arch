@@ -1,1 +1,1 @@
-export const codes = { user_not_found: 'user_not_found', invalid_password: 'invalid_password',  }
+export const codes = { user_not_found: 'user_not_found', invalid_password: 'invalid_password', invalid_username: 'invalid_username', invalid_credentials: 'invalid_credentials', password_greater_than_8: 'password_greater_than_8', username_greater_than_8: 'username_greater_than_8', unknown_error: 'unknown_error',  }

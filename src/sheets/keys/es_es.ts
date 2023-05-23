@@ -1,1 +1,0 @@
-export const es_es = { user_not_found: 'Não sei espanhol', invalid_password: 'Não sei espanhol',  }

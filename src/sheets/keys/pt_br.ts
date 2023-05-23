@@ -1,1 +1,1 @@
-export const pt_br = { user_not_found: 'Usuário não encontrado', invalid_password: 'Senha inválida',  }
+export const pt_br = { user_not_found: 'Usuário não encontrado', invalid_password: 'Senha inválida', invalid_username: 'Digite um nome de usuário válido', invalid_credentials: 'Credenciais Inválidas', password_greater_than_8: 'A senha não deve ter mais que 8 caracteres', username_greater_than_8: 'O nome de usuário não deve ter mais que 8 caracteres', unknown_error: 'Houve um erro inesperado',  }

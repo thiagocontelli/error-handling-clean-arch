@@ -1,1 +1,1 @@
-export const en_us = { user_not_found: 'User not found', invalid_password: 'Invalid password',  }
+export const en_us = { user_not_found: 'User not found', invalid_password: 'Invalid password', invalid_username: 'Enter a valid username', invalid_credentials: 'Invalid Credentials', password_greater_than_8: 'The password should not have more than 8 characters', username_greater_than_8: 'The username should not have more than 8 characters', unknown_error: 'There was an unexpected error',  }
