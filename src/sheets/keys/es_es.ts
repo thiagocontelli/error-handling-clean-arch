@@ -1,1 +1,1 @@
-export const es_es = { invalid_username: 'undefined', invalid_password: 'undefined', batata: 'undefined', user_not_found: 'Erro em espanol que eu nao sei escrever', a: 'f',  }
+export const es_es = { user_not_found: 'Não sei espanhol', invalid_password: 'Não sei espanhol',  }

@@ -21,7 +21,7 @@ async function readErrorSheet() {
   }).then(response => {
     const { values: rows } = response.data
 
-    const languages = rows[0].slice(1)
+    const languages = rows[0]
 
     languages.forEach(language => {
       let line = ''
