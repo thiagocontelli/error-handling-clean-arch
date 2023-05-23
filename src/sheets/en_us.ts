@@ -1,1 +1,0 @@
-export const en_us = { invalid_username: 'Enter a valid username', invalid_password: 'Enter a valid password', invalid_credentials: 'Invalid Credentials',  }

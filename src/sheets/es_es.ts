@@ -1,1 +1,0 @@
-export const es_es = { invalid_username: 'Introduce un nombre de usuario válido', invalid_password: 'Introduce una contraseña válida', invalid_credentials: 'Credenciales no válidas',  }

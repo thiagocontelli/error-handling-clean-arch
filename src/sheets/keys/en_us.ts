@@ -1,0 +1,1 @@
+export const en_us = { invalid_username: 'Invalid username', invalid_password: 'Enter a valid password', batata: 'kaka', user_not_found: 'User not found', a: 'd',  }

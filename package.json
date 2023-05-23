@@ -8,7 +8,8 @@
     "build": "tsc && vite build",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "read-error": "node ./src/sheets/script.js"
+    "read-error": "node ./src/sheets/scripts/readErrors.js",
+    "add-error": "node ./src/sheets/scripts/addError.js"
   },
   "dependencies": {
     "@primer/octicons-react": "^19.1.0",

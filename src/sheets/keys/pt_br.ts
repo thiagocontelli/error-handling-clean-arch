@@ -1,0 +1,1 @@
+export const pt_br = { invalid_username: 'Nome de usuário inválido', invalid_password: 'Digite uma senha válida', batata: 'chuchu', user_not_found: 'Usuário não encontrado', a: 's',  }
